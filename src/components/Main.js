@@ -3,19 +3,28 @@ import React, { Component } from "react";
 import Opciones from "./Opciones";
 import Recordatorio from "./Recordatorio";
 
+const historial = [];
+
 class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {
       contador: 0,
       seleccionPrevia: "",
-      historial: [],
     };
   }
 
-  handleClickA = (e) => {
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.contador !== this.state.contador) {
+      historial.push(this.state.seleccionPrevia);
+    }
+  }
+
+  handleClick = (e) => {
     const id = e.target.id;
-    if (id === "A" && this.state.seleccionPrevia !== "A") {
+    if (this.state.contador >= 7) {
+      alert("Fin.");
+    } else if (id === "A" && this.state.seleccionPrevia !== "A") {
       this.setState({
         contador: this.state.contador + 1,
         seleccionPrevia: "A",
@@ -35,18 +44,27 @@ class Main extends Component {
         seleccionPrevia: "B",
       });
     }
+    console.log(historial);
   };
 
   render() {
     return (
-      <div>
-        <h1>{data[this.state.contador].historia}</h1>
+      <div className="layout">
+        <h1 className="historia">{data[this.state.contador].historia}</h1>
         <Opciones
-          handleClick={this.handleClickA}
+          handleClick={this.handleClick}
           opcionA={data[this.state.contador].opciones.a}
           opcionB={data[this.state.contador].opciones.b}
         />
-        <Recordatorio seleccionPrevia={this.state.seleccionPrevia} />
+        <Recordatorio
+          seleccionPrevia={this.state.seleccionPrevia}
+          historial={historial.map(
+            (e, index) => (
+              <li key={index}>{e}</li>
+            ),
+            data[this.state.contador].id
+          )}
+        />
       </div>
     );
   }
