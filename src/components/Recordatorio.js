@@ -1,13 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 class Recordatorio extends Component {
-    render() {
-        return (
-            <div>
-                Recordatorio
-            </div>
-        )
-    }
+  render() {
+    return <div>Recordatorio</div>;
+  }
 }
 
 export default Recordatorio;

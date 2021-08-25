@@ -1,10 +1,13 @@
-import Main from './components/Main';
+import Main from "./components/Main";
 
 function App() {
   return (
-    <div className="App">
-      <Main />
-    </div>
+    console.log(),
+    (
+      <div className="App">
+        <Main />
+      </div>
+    )
   );
 }
 
