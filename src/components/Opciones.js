@@ -4,9 +4,13 @@ class Opciones extends Component {
   render() {
     return (
       <div>
-        <button onClick={this.props.handleClick}>A</button>
+        <button id="A" onClick={this.props.handleClick}>
+          A
+        </button>
         <h2>{this.props.opcionA}</h2>
-        <button onClick={this.props.handleClick}>B</button>
+        <button id="B" onClick={this.props.handleClick}>
+          B
+        </button>
         <h2>{this.props.opcionB}</h2>
       </div>
     );
