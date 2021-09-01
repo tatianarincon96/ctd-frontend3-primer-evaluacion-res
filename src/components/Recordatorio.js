@@ -4,8 +4,8 @@ class Recordatorio extends Component {
   render() {
     return (
       <div className="recordatorio">
-        <h3>Selección previa: {this.props.seleccionPrevia}</h3>
-        <h4>Anteriores: </h4>
+        <h3>Selección anterior: {this.props.seleccionPrevia}</h3>
+        <h4>Historial de opciones elegidas: </h4>
         <ul>{this.props.historial}</ul>
       </div>
     );
